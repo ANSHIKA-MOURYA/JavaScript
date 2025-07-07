@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   
+    </style>
+<body>
+   <div class="parent" style = "background-color: black; color:azure; padding: 20px;">
+    <div class="days">Monday</div>
+    <div class="days">Tuesday</div>
+    <div class="days">Wednesday</div>
+    <div class="days">Thursday</div>
+    <div class="days">Friday</div>
+    <div class="days">Saturday</div>
+    <div class="days">Sunday</div>
+   </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent');
+    console.log(parent);
+    console.log(parent.children);
+    console.log(parent.children[1].innerHTML);
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML);
+    }
+    parent.children[1].style.color = "orange";
+
+    console.log("nodes: " , parent.childNodes)
+    </script>
+</html>
+
+
+
+/*
+    In JavaScript DOM, every element on a webpage is treated like a node in a tree structure.
+
+    An element that contains another element is called the Parent,
+    and the element that is inside it is the Child.
+*/
+
+//traversal the dom (parent-child relationship)
+/*
+        | Property             | Description                       |
+    | -------------------- | --------------------------------- |
+    | `.parentNode`        | Go to parent of a node            |
+    | `.children`          | Get all child **elements**        |
+    | `.childNodes`        | Get **all nodes**, including text |
+    | `.firstElementChild` | Get the first child element       |
+    | `.lastElementChild`  | Get the last child element        |
+*/

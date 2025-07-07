@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    .bg-black{
-        background-color: black;
-    }
-    .text-white{
-        color: white;
-    }
-    </style>
-<body class ="bg-black text-white p-5">
-   
+<body>
+    
 </body>
+<script>
+   const div = document.createElement('div')
+   console.log(div);
+
+   div.className = "main"
+   div.id = Math.random() * 10;
+
+   //attaching so that it will display on page, becoz now its in memory only
+   const addToBody = document.createtextNode("body and content created from javascript");
+   div.appendChild(addToBody);
+    </script>
 </html>
-
-
-
