@@ -1,0 +1,48 @@
+/*
+
+    * DOM Selector Methods
+    | Method                       | Use Case                                                |
+| ---------------------------- | ------------------------------------------------------- |
+| `getElementById(id)`         | Selects **one** element by `id`                         |
+| `getElementsByClassName()`   | Selects **HTMLCollection** of elements with given class |
+| `getElementsByTagName()`     | Selects all elements of a tag                           |
+| `querySelector(selector)`    | Selects **first** match (CSS-style)                     |
+| `querySelectorAll(selector)` | Selects **all** matches as NodeList                     |
+
+*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="title">Hello</p>
+  <p class="info">Para 1</p>
+  <p class="info">Para 2</p>
+</body>
+</html>
+
+
+<script>
+  // Select the first paragraph by ID
+  const title = document.getElementById('title');
+  console.log(title.textContent); // Outputs: Hello
+
+  // Select all paragraphs with class 'info'
+  const infoElements = document.getElementsByClassName('info');
+  console.log(infoElements.length); // Outputs: 2
+
+  // Select all <p> elements
+  const paragraphs = document.getElementsByTagName('p');
+  console.log(paragraphs.length); // Outputs: 3
+
+  // Select the first element matching the CSS selector
+  const firstInfo = document.querySelector('.info');
+  console.log(firstInfo.textContent); // Outputs: Para 1
+
+  // Select all elements matching the CSS selector
+  const allInfo = document.querySelectorAll('.info');
+  console.log(allInfo.length); // Outputs: 2
+</script>
