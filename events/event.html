@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+             <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>  onclick = "alert('owl')"  ----not good approach
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+//onclick offers less flexibility than addEventListener
+document.getElementById('photoshop').onclick = function(){
+    alert('Photoshop using onclick');
+}
+
+// Using addEventListener for better flexibility and multiple event handling
+document.getElementById('japan').addEventListener('click', function(){
+    alert('Japan using addEventListener');
+}, false); // false means the event will not bubble up, true would mean it bubbles up  // bubbling is when the event propagates from the target element up to its ancestors
+// the third parameter is passed, but by default it is false, meaning the event will not bubble up, and hence mostly we did not pass it, but if its true, it means the event will bubble up to its ancestors
+
+/* ====
+    eventpropagation
+    event bubbling is when the event propagates from the target
+     element up to its ancestors.
+
+    event capturing is when the event starts from the root
+    and goes down to the target element.
+
+
+    ==== */
+    document.getElementById('images').addEventListener('click', function(){
+        console.log('clicked inside the ul');
+    }, false); 
+
+    document.getElementById('owl').addEventListener('click', function(){
+        console.log('Owl clicked');
+        e.stopPropagation(); // stops the event from bubbling up to the parent elements
+    }, false); // false means the event will not bubble up, true would mean it bubbles up
+//=============================================
+    document.getElementById('images').addEventListener('click', function(){
+        console.log('clicked inside the ul');
+    }, true); // true means the event will bubble up, false would mean it does not bubble up
+
+    document.getElementById('owl').addEventListener('click', function(){
+        console.log('Owl clicked');
+    }, true); 
+
+//attachEvent is an old method for IE8 and earlier, not recommended for modern browsers
+/* document.getElementById('river').attachEvent('onclick', function(){
+//     alert('River using attachEvent');
+ }); */
+
+// jQuery is a library that simplifies event handling, but it's not necessary for simple tasks
+/* $('#owl').click(function(){
+//     alert('Owl using jQuery');
+ }); */
+
+
+document.getElementById('google').addEventListener('click', function(e){
+    e.preventDefault(); // prevents the default action of the link, which is to navigate to the URL
+    alert('Google link clicked, but navigation prevented');
+}, false); // false means the event will not bubble up, true would mean it bubbles up
+
+
+// to remove an element from the DOM when clicked, we can use the following code
+document.querySelector('#images').addEventListener('click', function(e){
+   console.log(e.target.parentNode); // logs the parent element of the clicked element
+   let removeIt = e.target.parentNode;
+   removeIt.remove(); // removes the parent element of the clicked element
+   
+   // e.target is the element that triggered the event, in this case, the clicked image
+   // e.target.parentNode is the parent element of the clicked image, which is the <li> element
+   // remove() is a method that removes the element from the DOM
+}, false); // false means the event will not bubble up, true would mean it bubbles up
+</script>
+</html>
